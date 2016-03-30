@@ -1,10 +1,10 @@
-CASANOVA - A New Way to use CASA
+CASANOVA - A *New* Way to use CASA
 ================================
 
 
 Why casanova?
 ---------------------
-NRAO's CASA 
+NRAO's [CASA](https://casa.nrao.edu/docs/UserMan/UserMan.html) 
 
 Some disadvantages of this approach:
 - Casapy comes with it's own (old) versions of Python, Matplotlib, etc.
@@ -14,15 +14,26 @@ Some disadvantages of this approach:
 - The same holds for self made modules in the same directory.
 - This makes creating a more elaborate pipeline (combination of scripts) ugly.
 
-Various other CASA users have noted these disadvantages and several workarounds exist, e.g. [drive-casa](http://drive-casa.readthedocs.org/en/latest/introduction.html) which allows for dynamic interaction with CASA from a separate Python process, [casa-python](https://github.com/radio-astro-tools/casa-python) which allows for a pip-like installation of third party packages, another project named [casa-python](https://anaconda.org/pkgw/casa-python) for anaconda which enables Python to import the CASA toolkit together with separate [tasks](https://github.com/pkgw/pwkit/blob/master/pwkit/environments/casa/tasks.py). This last [casa-python](https://anaconda.org/pkgw/casa-python) and tasks are made by [Dr. Peter K. G. Williams](https://newton.cx/~peter/about-me/). He also made a blogpost explaining how to use [CASA in Python without casapy](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/). Casanova is basically an extension of this blogposts towards also including the CASA tasks.
+Various other CASA users have noted these disadvantages and several workarounds exist, e.g. [drive-casa](http://drive-casa.readthedocs.org/en/latest/introduction.html) which allows for dynamic interaction with CASA from a separate Python process, [casa-python](https://github.com/radio-astro-tools/casa-python) which allows for a pip-like installation of third party packages and another project named [casa-python](https://anaconda.org/pkgw/casa-python) for anaconda which enables Python to import the CASA toolkit together with separate [tasks](https://github.com/pkgw/pwkit/blob/master/pwkit/environments/casa/tasks.py). These last [casa-python](https://anaconda.org/pkgw/casa-python) and [tasks](https://github.com/pkgw/pwkit/blob/master/pwkit/environments/casa/tasks.py) are made by [Dr. Peter K. G. Williams](https://newton.cx/~peter/about-me/). He also made a blogpost explaining how to use [CASA in Python without casapy](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/). Casanova is basically an extension of this blogposts towards also including the CASA tasks.
 
 The idea of casanova is to make sure that you can import CASA (toolkit and tasks) inside your normal version of Python.
 
-Casa toolkit
+CASA toolkit
 ------------
+CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit (or CASA core / casac) you need to set up the dynamically-linked libraries so that they can all find each other. This is all explained in Dr. Peter K. G. Williams' [blogpost](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/).
 
+In casanova, accessing the CASA toolkits (casac) comes down to:
+```python
+import casac
+tb = casac.casac.table ()
+ms = casac.casac.ms ()
+ms.open ('vis.ms')
+print ms.nrow ()
+ms.close ()
+```
+Note that ms and tb are instances of the ms and table classes.
 
-Casa tasks
+CASA tasks
 ----------
 
 
@@ -47,7 +58,7 @@ These instructions are for tcsh.
 
 5. Modify and run the script **install_casanova**.
 
-6. I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ folder and storing in a new directory called not_needed_libraries in the python_packages directory. I sort of hope that the newer libgfortran is backwards compatible. For now, it seems to work.
+6. I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ folder and storing them in a new directory called not_needed_libraries in the python_packages directory. I sort of hope that the newer libgfortran is backwards compatible. For now, it seems to work.
 
 7. Modify the **casanova_startup** script.
 
