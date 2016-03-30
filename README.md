@@ -28,20 +28,29 @@ Installation
 These instructions are for tcsh.
 
 1. Download the files in this repository to some directory.
-2. Download and install casa (I used casa-release-4.5.2-el6).
-3. Find out casapath
-4. Download and install [patchelf](http://nixos.org/patchelf.html)
+
+2. Download and install casa to some directory (I used casa-release-4.5.2-el6).
+
+3. Find out your casapath: start the freshly installed casapy and type
+   `import os`
+   `print os.environ['CASAPATH']`
+   Store this somewhere (you need this later in the **casanova_startup** script).
+
+4. Download and install [patchelf](http://nixos.org/patchelf.html).
 
    If you don't have sudo permissions, you might want to do:
   1. Untar patchelf and go to directory.
   2. `./configure --prefix=/some/folder`
   3. `make`
   4. `make install`
-  5. Set the location in your path: `set path = ($path /some/folder/bin)` Note that patchelf only works in this instance of your shell and that you can also change your path in .cshrc.
+  5. Set the location in your path: `set path = ($path /some/folder/bin)` Note that patchelf now only works in this instance of your shell. You can also change your path in .cshrc.
 
 5. Modify and run the script **install_casanova**
-6. Remove libgfortran thing
-7. Modify **casnova_startup** script.
+
+6. I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the __casac__ folder and storing in a new directory called not_needed_libraries in the python_packages directory. I sort of hope that the newer libgfortran is backwards compatible.
+
+7. Modify the **casanova_startup** script.
+
 8. Add `alias casanova "source /net/dedemsvaart/data2/kvdam/casa_installation2/casanova_startup"` to .cshrc.
 
 Project status
