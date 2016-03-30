@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set oldpythonpath = "${PYTHONPATH}"
+
+setenv PYTHONPATH "/net/dedemsvaart/data2/kvdam/casa_installation/python_packages:${PYTHONPATH}"
+setenv CASAPATH "/net/dedemsvaart/data2/kvdam/casa_installation/casa-release-4.5.2-el6  linux socorro dedemsvaart"
+
+ipython $argv
+
+setenv PYTHONPATH "${oldpythonpath}"
