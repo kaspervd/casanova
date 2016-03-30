@@ -18,9 +18,9 @@ Various other CASA users have noted these disadvantages and several workarounds 
 
 The idea of casanova is to make sure that you can import CASA (toolkit and tasks) inside your normal version of Python.
 
-CASA toolkit
-------------
-CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit (or CASA core / casac) you need to set up the dynamically-linked libraries so that they can all find each other. This is all explained in Dr. Peter K. G. Williams' [blogpost](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/).
+Accessing the CASA toolkit
+--------------------------
+CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit or CASA core (casac) you need to set up the dynamically-linked libraries so that they can all find each other. This is all explained in Dr. Peter K. G. Williams' [blogpost](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/).
 
 In casanova, accessing the CASA toolkits (casac) comes down to:
 ```python
@@ -33,9 +33,18 @@ ms.close ()
 ```
 Note that ms and tb are instances of the ms and table classes.
 
-CASA tasks
-----------
+Accessing CASA tasks
+--------------------
+There are 137 CASA [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html) which you can access in casanova using:
+```python
+from casat import plotants
+plotants.plotants(vis='myMeasurementSet.ms')
+```
+`casat` stands for CASA tasks. Note that the actual task function is located in a script with the same name.
 
+Casapy uses its own installation of Python with an older version of matplotlib. In order to enable the tasks to work with the newer matplotlib installed in your own Python I had to change some files which are now in the **code** directory in this repository. I disabled the additional buttons in casapy's version of the plotter (for the differences see `plotants` in casapy and `plotants` in casanova). Also, I changed **taskinit.py** and created **\_\_init\_\_.py** in the casat directory in order to recreate a needed variable normally set when opening casapy.
+
+The files **tasks.txt** and **dependencies.txt** contain the available CASA tasks and the files needed to execute them.
 
 Installation
 ------------
@@ -64,7 +73,7 @@ These instructions are for tcsh.
 
 8. Add `alias casanova "source /net/dedemsvaart/data2/kvdam/casa_installation/casanova_startup"` to your .cshrc file. Note that you should change the path to the **casanova_startup** script in your casa installation directory and not to the one in the directory where you stored this repository. This way everything stays in the same directory and you can later delete this repository on your computer without disabling casanova.
 
-9. Restart your shell (or `source ~/.cshrc`) and type `casanova`.
+9. Restart your shell (or `source ~/.cshrc`) and type `casanova` or `casanova myscript.py`.
 
 Project status
 --------------
