@@ -4,9 +4,9 @@ CASANOVA - A *New* Way to use CASA
 
 Why casanova?
 ---------------------
-NRAO's [CASA](https://casa.nrao.edu/docs/UserMan/UserMan.html) 
+NRAO's [CASA](https://casa.nrao.edu/docs/UserMan/UserMan.html) (Common Astronomy Software Applications) is set of C++ tools bundled together under an iPython interface and comes with its own Python installation. There are probably very good reasons to bundle a separate Python installation but sometimes this approach has its drawbacks.
 
-Some disadvantages of this approach:
+Some disadvantages:
 - Casapy comes with it's own (old) versions of Python, Matplotlib, etc.
 - It is not possible to import Python packages which are already installed against the system Python.
 - Installing third party packages is possible but devious.
@@ -20,7 +20,7 @@ The idea of casanova is to make sure that you can import CASA (toolkit and tasks
 
 Accessing the CASA toolkit
 --------------------------
-CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit or CASA core (casac) you need to set up the dynamically-linked libraries so that they can all find each other. This is all explained in Dr. Peter K. G. Williams' [blogpost](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/).
+CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit or CASA core (casac) you need to set up the dynamically-linked libraries so that they can all find each other. This is all explained in Dr. Peter K. G. Williams' [blogpost](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/) and handled in the **install_casanova** script.
 
 In casanova, accessing the CASA toolkits (casac) comes down to:
 ```python
