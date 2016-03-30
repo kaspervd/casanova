@@ -25,11 +25,11 @@ CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and
 In casanova, accessing the CASA toolkits (casac) comes down to:
 ```python
 import casac
-tb = casac.casac.table ()
-ms = casac.casac.ms ()
+tb = casac.casac.table()
+ms = casac.casac.ms()
 ms.open ('vis.ms')
-print ms.nrow ()
-ms.close ()
+print ms.nrow()
+ms.close()
 ```
 Note that ms and tb are instances of the ms and table classes.
 
