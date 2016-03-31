@@ -1,7 +1,6 @@
 CASANOVA - A *New* Way to use CASA
 ================================
 
-
 Why casanova?
 ---------------------
 NRAO's [CASA](https://casa.nrao.edu/docs/UserMan/UserMan.html) (Common Astronomy Software Applications) is set of C++ tools bundled together under an iPython interface and comes with its own Python installation. There are probably very good reasons to bundle a separate Python installation but sometimes this approach has its drawbacks.
@@ -52,9 +51,9 @@ These instructions are for tcsh.
 
 1. Download the files in this repository to some directory.
 
-2. Download and install casa (I used casa-release-4.5.2-el6) to some other directory.
+2. Download and install casa (I used casa-release-4.5.2-el6) to a directory named casapy (or so). Other directories such as your casa-release-something and python_packages will also end up in this directory.
 
-3. Find out your casapath: start the freshly installed casapy and type`import os` and `print os.environ['CASAPATH']`. Store this somewhere (you need this later in the **casanova_startup** script).
+3. Find out your casapath: start the freshly installed casapy and type`import os` and `print os.environ['CASAPATH']`. Store this somewhere (you need this later in the **casanova_startup** script). I will try to make this step superfluous.
 
 4. Download and install [patchelf](http://nixos.org/patchelf.html).
 
@@ -67,13 +66,14 @@ These instructions are for tcsh.
 
 5. Modify and run the script **install_casanova**.
 
-6. I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ directory and storing them in a new folder called not_needed_libraries in the python_packages directory. I sort of hope that GFORTRAN_1.4 is newer and backwards compatible. For now, it seems to work.
+6. Modify the **casanova_startup** script which was automatically placed in the CASA installation directory.
 
-7. Modify the **casanova_startup** script which was automatically placed in the CASA installation directory.
+7. Add `alias casanova "source /net/dedemsvaart/data2/kvdam/casa_installation/casanova_startup"` to your .cshrc file. Note that you should change the path to the **casanova_startup** script in your casa installation directory and not to the one in the directory where you stored this repository. This way everything stays in the same directory and you can later delete this repository on your computer without disabling casanova.
 
-8. Add `alias casanova "source /net/dedemsvaart/data2/kvdam/casa_installation/casanova_startup"` to your .cshrc file. Note that you should change the path to the **casanova_startup** script in your casa installation directory and not to the one in the directory where you stored this repository. This way everything stays in the same directory and you can later delete this repository on your computer without disabling casanova.
+8. Restart your shell (or `source ~/.cshrc`) and type `casanova` or `casanova myscript.py`.
 
-9. Restart your shell (or `source ~/.cshrc`) and type `casanova` or `casanova myscript.py`.
+Note:
+I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ directory and storing them in a new folder called not_needed_libraries in the python_packages directory. I sort of hope that GFORTRAN_1.4 is newer and backwards compatible. For now, it seems to work.
 
 Project status
 --------------
