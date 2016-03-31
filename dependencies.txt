@@ -368,6 +368,9 @@ importmiriad_cli.pyo
 importmiriad_pg.py
 importmiriad_pg.pyc
 importmiriad_pg.pyo
+importuvfits.py
+importuvfits.pyc
+importuvfits.pyo
 importuvfits_cli.py
 importuvfits_cli.pyc
 importuvfits_cli.pyo
