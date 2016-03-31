@@ -67,9 +67,9 @@ These instructions are for tcsh.
 
 5. Modify and run the script **install_casanova**.
 
-6. I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ folder and storing them in a new directory called not_needed_libraries in the python_packages directory. I sort of hope that the newer libgfortran is backwards compatible. For now, it seems to work.
+6. I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ directory and storing them in a new folder called not_needed_libraries in the python_packages directory. I sort of hope that GFORTRAN_1.4 is newer and backwards compatible. For now, it seems to work.
 
-7. Modify the **casanova_startup** script.
+7. Modify the **casanova_startup** script which was automatically placed in the CASA installation directory.
 
 8. Add `alias casanova "source /net/dedemsvaart/data2/kvdam/casa_installation/casanova_startup"` to your .cshrc file. Note that you should change the path to the **casanova_startup** script in your casa installation directory and not to the one in the directory where you stored this repository. This way everything stays in the same directory and you can later delete this repository on your computer without disabling casanova.
 

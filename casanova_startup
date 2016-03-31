@@ -2,7 +2,12 @@
 
 set oldpythonpath = "${PYTHONPATH}"
 
+# The python_packages folder was automatically created with the install_casanova script.
+# Change this path:
 setenv PYTHONPATH "/net/dedemsvaart/data2/kvdam/casa_installation/python_packages:${PYTHONPATH}"
+
+# This is the casapath you stored earlier (this can be found by opening the regular casapy).
+# Change this path:
 setenv CASAPATH "/net/dedemsvaart/data2/kvdam/casa_installation/casa-release-4.5.2-el6  linux socorro dedemsvaart"
 
 ipython $argv
