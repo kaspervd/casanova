@@ -19,7 +19,7 @@ The idea of casanova is to make sure that you can import CASA (toolkit and tasks
 
 Accessing the CASA toolkit
 --------------------------
-CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit or CASA core (casac) you need to set up the dynamically-linked libraries so that they can all find each other. This is all explained in Dr. Peter K. G. Williams' [blogpost](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/) and handled in the **install_casanova** script.
+CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit or CASA core (`casac`) you need to install its binary modules. If you can use [Anaconda Python](https://docs.continuum.io/anaconda/index), the easiest way to do this is to install Peter Williams' [casa-python](https://anaconda.org/pkgw/casa-python) and [casa-data](https://anaconda.org/pkgw/casa-data) packages into an Anaconda install using the `conda` command. If you are unable to use Anaconda, you can try to copy the necessary binaries out of a standard CASA installation and set up the dynamically-linked libraries so that they can all find each other as explained [a blog post by Peter Williams](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/). This is what the **install_casanova** script does.
 
 In casanova, accessing the CASA toolkits (casac) comes down to:
 ```python
