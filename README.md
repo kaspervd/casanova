@@ -79,5 +79,3 @@ Project status
 I've tried quite a few of the CASA tasks but not all of them (there are 137). So it's possible that you find a bug using one of the tasks.
 
 I ended up creating casanova for my master's research project at Leiden Observatory so after a few months I might not be a radio astronomer anymore ;-).
-
-If I had more time I'd try to remove the part that creates the log files everywhere!
