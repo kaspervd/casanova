@@ -10,6 +10,6 @@ setenv PYTHONPATH "/net/dedemsvaart/data2/kvdam/casa_installation/python_package
 # Change this path:
 setenv CASAPATH "/net/dedemsvaart/data2/kvdam/casa_installation/casa-release-4.5.2-el6  linux socorro dedemsvaart"
 
-ipython $argv
+python $argv # Or use ipython
 
 setenv PYTHONPATH "${oldpythonpath}"
