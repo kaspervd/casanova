@@ -36,6 +36,11 @@ ln -s $casa/data $casainstalldir
 # Copy the startup script to the casa install directory
 cp $infodir/casanova_startup $casainstalldir
 
+# Add the new ftw() task
+cp $infodir/code/task_ftw.* $python
+cp $infodir/code/ftw.p* $python/casat
+cp $infodir/code/ftw.xml $casa/xml
+
 ########################################################################
 # The following is based on Dr. Peter K. G. Williams work              #
 # See: https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/ #

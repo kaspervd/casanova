@@ -74,8 +74,20 @@ These instructions are for tcsh.
 
 Note: I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ directory and storing them in a new folder called not_needed_libraries in the python_packages directory. I sort of hope that GFORTRAN_1.4 is newer and backwards compatible. For now, it seems to work.
 
+Extra Task
+----------
+ftw() is added, more info will follow.
+
+Notes
+-----
+You might want to change os.rename in cleanhelper.py to shutil.move because of invalid cross-device [link problem](https://docs.python.org/2/library/os.html#os.rename)
+
 Project status
 --------------
 I've tried quite a few of the CASA tasks but not all of them (there are 137). So it's possible that you find a bug using one of the tasks.
 
 I ended up creating casanova for my master's research project at Leiden Observatory so after a few months I might not be a radio astronomer anymore ;-).
+
+Contact:
+Kasper van Dam
+kvdam@strw.leidenuniv.nl
