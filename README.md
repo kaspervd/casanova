@@ -80,7 +80,7 @@ ftw() is added, more info will follow.
 
 Notes
 -----
-You might want to change os.rename in cleanhelper.py to shutil.move because of invalid cross-device [link problem](https://docs.python.org/2/library/os.html#os.rename)
+You might want to change os.rename in cleanhelper.py to shutil.move because of invalid cross-device [link problems](https://docs.python.org/2/library/os.html#os.rename)
 
 Project status
 --------------
