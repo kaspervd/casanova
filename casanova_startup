@@ -6,8 +6,9 @@ set oldpythonpath = "${PYTHONPATH}"
 # Change this path:
 setenv PYTHONPATH "/net/dedemsvaart/data2/kvdam/casa_installation/python_packages:${PYTHONPATH}"
 
-# This is the casapath you stored earlier (this can be found by opening the regular casapy).
-# Change this path:
+# Change only the first and last element of this path (linux socorro is OK)
+# The first element is the directory where the casa code is stored, so /own/path/casa-release-something
+# The last element is the computer name (in my case this was dedemsvaart) I'm not sure if this is even used but change it anyway
 setenv CASAPATH "/net/dedemsvaart/data2/kvdam/casa_installation/casa-release-4.5.2-el6  linux socorro dedemsvaart"
 
 python $argv # Or use ipython

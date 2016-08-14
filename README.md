@@ -19,25 +19,25 @@ The idea of casanova is to make sure that you can import CASA (toolkit and tasks
 
 Accessing the CASA toolkit
 --------------------------
-CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit or CASA core (casac) you need to set up the dynamically-linked libraries so that they can all find each other. This is all explained in Dr. Peter K. G. Williams' [blogpost](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/) and handled in the **install_casanova** script.
+CASA comes with a [toolkit](https://casa.nrao.edu/docs/CasaRef/CasaRef.html) and [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html). In order to enable Python to import the CASA toolkit or CASA core (`casac`) you need to install its binary modules. If you can use [Anaconda Python](https://docs.continuum.io/anaconda/index), the easiest way to do this is to install Peter Williams' [casa-python](https://anaconda.org/pkgw/casa-python) and [casa-data](https://anaconda.org/pkgw/casa-data) packages into an Anaconda install using the `conda` command. If you are unable to use Anaconda, you can try to copy the necessary binaries out of a standard CASA installation and set up the dynamically-linked libraries so that they can all find each other as explained [a blog post by Peter Williams](https://newton.cx/~peter/2014/02/casa-in-python-without-casapy/). This is what the **install_casanova** script does.
 
 In casanova, accessing the CASA toolkits (casac) comes down to:
 ```python
 import casac
-tb = casac.casac.table()
 ms = casac.casac.ms()
 ms.open ('vis.ms')
 print ms.nrow()
 ms.close()
 ```
-Note that ms and tb are instances of the ms and table classes.
+Note that ms is an instance of the ms class.
 
 Accessing CASA tasks
 --------------------
 There are 137 CASA [tasks](https://casa.nrao.edu/docs/TaskRef/TaskRef.html) which you can access in casanova using:
 ```python
 from casat import plotants
-plotants.plotants(vis='myMeasurementSet.ms')
+plotants = plotants.plotants
+plotants(vis='myMeasurementSet.ms')
 ```
 `casat` stands for CASA tasks. Note that the actual task function is located in a script with the same name.
 
@@ -49,13 +49,11 @@ Installation
 ------------
 These instructions are for tcsh.
 
-1. Download the files in this repository to some directory.
+1. Download (and unzip) the files in this repository to some directory.
 
-2. Download and install casa (I used casa-release-4.5.2-el6) to a directory named casapy (or so). Other directories such as your casa-release-something and python_packages will also end up in this directory.
+2. Move casa (I used casa-release-4.5.2-el6) to a directory named casapy (or so). Other directories such as python_packages will also end up in this directory.
 
-3. Find out your casapath: start the freshly installed casapy and type`import os` and `print os.environ['CASAPATH']`. Store this somewhere (you need this later in the **casanova_startup** script). I will try to make this step superfluous.
-
-4. Download and install [patchelf](http://nixos.org/patchelf.html).
+3. Download and install [patchelf](http://nixos.org/patchelf.html).
 
    If you don't have sudo permissions, you might want to do:
   1. Untar patchelf and go to directory.
@@ -64,19 +62,19 @@ These instructions are for tcsh.
   4. `make install`
   5. Set the location in your path: `set path = ($path /some/folder/bin)` Note that patchelf now only works in this instance of your shell. You can also permanently add patchelf to your path in .cshrc.
 
-5. Modify and run the script **install_casanova**.
+4. Modify and run the script **install_casanova**.
 
-6. Modify the **casanova_startup** script which was automatically placed in the CASA installation directory.
+5. Modify the **casanova_startup** script which was automatically placed in the CASA installation directory (the directory of step 2).
 
-7. Add `alias casanova "source /net/dedemsvaart/data2/kvdam/casa_installation/casanova_startup"` to your .cshrc file. Note that you should change the path to the **casanova_startup** script in your casa installation directory and not to the one in the directory where you stored this repository. This way everything stays in the same directory and you can later delete this repository on your computer without disabling casanova.
+6. Add `alias casanova "source /net/dedemsvaart/data2/kvdam/casa_installation/casanova_startup"` to your .cshrc file. Note that you should change the path to the **casanova_startup** script in your casa installation directory and not to the one in the directory where you stored this repository. This way everything stays in the same directory and you can later delete this repository on your computer without disabling casanova.
 
-8. Restart your shell (or `source ~/.cshrc`) and type `casanova` or `casanova myscript.py`.
+7. Restart your shell (or `source ~/.cshrc`) and type `casanova` or `casanova myscript.py`.
 
 Note: I ran into problems with *libgfortran.so.3* and *libgfortran.so.3.0.0*. My other programs now preferred this fortran library over others (i.e.: version `GFORTRAN_1.4' not found (required by /usr/lib64/atlas/libtatlas.so.3)). I fixed this very bluntly by removing the libgfortran files from the \_\_casac\_\_ directory and storing them in a new folder called not_needed_libraries in the python_packages directory. I sort of hope that GFORTRAN_1.4 is newer and backwards compatible. For now, it seems to work.
 
 Extra Task
 ----------
-ftw() is added, more info will follow.
+A user-contributed task ftw() is automatically added. This new task is adapted from the regular ft() task but now also takes W-projection into account. The task is made by R. J. van Weeren.
 
 Notes
 -----
@@ -86,7 +84,7 @@ Project status
 --------------
 I've tried quite a few of the CASA tasks but not all of them (there are 137). So it's possible that you find a bug using one of the tasks.
 
-I ended up creating casanova for my master's research project at Leiden Observatory so after a few months I might not be a radio astronomer anymore ;-).
+I ended up creating casanova for my master's research project at Leiden Observatory (see my cspam repository) so after a few months I might not be a radio astronomer anymore ;-).
 
 Contact:
 Kasper van Dam

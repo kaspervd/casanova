@@ -1,6 +1,8 @@
 #! /bin/sh
 
-# Edit these paths to your own situation
+########################################################################
+# Edit these paths to your own situation                               #
+########################################################################
 
 # Where this file is located:
 infodir=~/Documents/MA-project-2/casanova
@@ -8,12 +10,17 @@ infodir=~/Documents/MA-project-2/casanova
 # Where you install casa
 casainstalldir=/net/dedemsvaart/data2/kvdam/casa_installation2
 
-# Create python_packages directory
+# Create python_packages directory, don't change this line
 mkdir -m 777 $casainstalldir/python_packages
 
-# Note that your release may differ, so edit the path
+# Note that your release may differ, so possibly edit the path
 casa=$casainstalldir/casa-release-4.5.2-el6
 python=$casainstalldir/python_packages
+
+########################################################################
+# Only change the paths above                                          #
+# No need to change anything below this block                          #
+########################################################################
 
 # Copy the casat dependency files
 cd $casa/lib/python2.7
