@@ -88,6 +88,4 @@ I ended up creating casanova for my master's research project at Leiden Observat
 
 EDIT: I work at [Nikhef](http://www.nikhef.nl/) now.
 
-Contact:
-Kasper van Dam
-kvdam@strw.leidenuniv.nl or kaspervd@nikhef.nl
+Contact: kvdam@strw.leidenuniv.nl or kaspervd@nikhef.nl
