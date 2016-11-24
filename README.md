@@ -86,6 +86,9 @@ I've tried quite a few of the CASA tasks but not all of them (there are 137). So
 
 I ended up creating casanova for my master's research project at Leiden Observatory (see my cspam repository) so after a few months I might not be a radio astronomer anymore ;-).
 
+EDIT: I work at [Nikhef](http://www.nikhef.nl/) now.
+
 Contact:
 Kasper van Dam
 kvdam@strw.leidenuniv.nl
+kaspervd@nikhef.nl
