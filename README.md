@@ -90,5 +90,4 @@ EDIT: I work at [Nikhef](http://www.nikhef.nl/) now.
 
 Contact:
 Kasper van Dam
-kvdam@strw.leidenuniv.nl
-kaspervd@nikhef.nl
+kvdam@strw.leidenuniv.nl or kaspervd@nikhef.nl
